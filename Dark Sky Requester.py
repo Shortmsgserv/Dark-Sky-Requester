@@ -26,20 +26,28 @@ print(location.address)
 
 currently = FIOCurrently.FIOCurrently(fio)
 print("The Temperature in ", userEnteredLocation, "is", currently.temperature)
-userEnteredTimeframe = input("What timeframe do you want to know, minutely, hourly, daily: ")
-#userEnteredTimeframe = str.lower(userEnteredTimeframe)
+userEnteredTimeframe = input("What timeframe do you want to know; currently, hourly, daily: ")
+userEnteredTimeframe = str.lower(userEnteredTimeframe)
 
+currently = FIOCurrently.FIOCurrently(fio)
 minutely = FIOMinutely.FIOMinutely(fio)
 hourly = FIOHourly.FIOHourly(fio)
 daily = FIODaily.FIODaily(fio)
 
-if userEnteredTimeframe == "minutely":
-	print(minutely.summary)
+if userEnteredTimeframe == "currently":
+	print("Current Summary: ", currently.summary)
+	print("Current Temperature: ", currently.temperature)
+	print("Current UV Index: ", currently.uvIndex)
 if userEnteredTimeframe == "hourly":
-	print(hourly.summary)
+	print("Hourly Summary: ", hourly.summary)
+	#print("Hourly Temperature: ", hourly.data)
+	print("Hourly UV Index: ", hourly)
 if userEnteredTimeframe == "daily":
-	print(daily.summary)
-else:
-	print("I'm not sure what you typed.")
+	print("Daily Summary: ", daily.summary)
+	print("Daily Temperature: ", daily.temperatureHigh)
+	print("Daily UV Index: ", daily.uvIndex)
+
+
+print(userEnteredTimeframe)
 	
 
